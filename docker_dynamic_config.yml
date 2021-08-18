@@ -1,0 +1,79 @@
+# Shoutout to djpic/traefik for the guide/code: https://gitlab.com/djpic/docker-images/-/blob/master/Traefik/tls/traefik_dynamic.yml
+# TLS config
+# Reference: https://doc.traefik.io/traefik/https/tls/
+tls:
+  options:
+    # Set default for a minimum of TLS v1.2 with the most secure ciphers; the browser can negotiate to TLS v1.3 if preferred.
+    default:
+      minVersion: VersionTLS12
+      cipherSuites:
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+
+    # Custom option for only TLS v1.3; if browser does not support TLS v1.3, the page will fail to load.
+    tlsv13only:
+      minVersion: VersionTLS13
+
+# HTTP Headers config
+# Reference: https://doc.traefik.io/traefik/middlewares/headers/
+http:
+  middlewares:
+    # HTTPS Scheme redirect
+    https-redirect:
+      redirectScheme:
+        scheme: https
+
+    # Enabled Secure headers
+    secure-headers:
+      headers:
+        sslRedirect: true
+        frameDeny: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 63072000
+        contentTypeNosniff: true
+        accessControlAllowMethods:
+          - GET
+          - POST
+        accessControlMaxAge: 100
+        addVaryheader: true
+        contentSecurityPolicy: script-src 'self'
+        referrerPolicy: origin-when-cross-origin
+
+    # Secure headers but allowing all HTTP methods
+    secure-headers-all-methods:
+      headers:
+        sslRedirect: true
+        frameDeny: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 63072000
+        contentTypeNosniff: true
+        accessControlMaxAge: 100
+        addVaryheader: true
+        contentSecurityPolicy: script-src 'self'
+        referrerPolicy: origin-when-cross-origin
+
+    # Semi Secure Headers to allow custom contentSecurityPolicy
+    secure-headers-no-csp:
+      headers:
+        sslRedirect: true
+        frameDeny: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 63072000
+        contentTypeNosniff: true
+        accessControlAllowMethods:
+          - GET
+          - POST
+        accessControlMaxAge: 100
+        addVaryheader: true
+        referrerPolicy: origin-when-cross-origin
+
+    # Allow compressed content
+    compress-content:
+      compress: {}
