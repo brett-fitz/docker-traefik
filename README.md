@@ -10,6 +10,8 @@ There are two key differences between his image and mine:
 * Utilizes the latest version of Traefik.
 * Implements a secure HTTP middleware that allows all HTTP methods
 
+Docker Hub :package: https://hub.docker.com/r/brettfitz/traefik
+
 ## How to use :pencil:
 
 ### Docker Compose :memo:
