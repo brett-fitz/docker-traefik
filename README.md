@@ -25,15 +25,22 @@ traefik:
 ```
 
 ### Middlewares :twisted_rightwards_arrows:
+To add a middleware, apply the deploy label to your container. :warning: You must include the 
+`@file` with the middleware name, which tells Traefik to use the file provider to find it. 
+
+Available middlewares:
+* https-redirect
+* secure-headers
+* secure-headers-all-methods
+* secure-headers-no-csp
+* compress-content
 
 #### HTTPs redirect only :arrow_right_hook:
-Add this deploy label to your container where `myrouter` is the name of your router.
 ```yaml
 - "traefik.http.routers.myrouter.middlewares=https-redirect@file"
 ```
 
 #### HTTPs redirect + secure-headers :lock:
-Add this deploy label to your container where `myrouter` is the name of your router.
 ```yaml
 - "traefik.http.routers.myrouter.middlewares=https-redirect@file, secure-headers@file"
 ```
