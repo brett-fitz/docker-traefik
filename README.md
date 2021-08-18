@@ -37,4 +37,4 @@ Add this deploy label to your container where `myrouter` is the name of your rou
 ```
 
 ## Help / Troubleshooting :construction_worker:
-Contact me on Twitter [@_brettfitz](https://twitter.com/_brettfitz)
+Contact me on Twitter [@_brettfitz](https://twitter.com/_brettfitz) or submit a GitHub issue!
