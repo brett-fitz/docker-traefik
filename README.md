@@ -36,5 +36,5 @@ Add this deploy label to your container where `myrouter` is the name of your rou
 - "traefik.http.routers.myrouter.middlewares=https-redirect@file, secure-headers@file"
 ```
 
-## Help / Troubleshooting :wrench:
+## Help / Troubleshooting :construction_worker:
 Contact me on Twitter [@_brettfitz](https://twitter.com/_brettfitz)
