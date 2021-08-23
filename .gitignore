@@ -1,0 +1,9 @@
+.DS_Store
+
+# Virtual Environments
+.idea/
+.env/
+venv/
+.venv/
+pyvenv.cfg
+/**/__pycache__/
