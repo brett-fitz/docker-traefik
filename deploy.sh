@@ -7,5 +7,5 @@ docker rmi brettfitz/traefik:latest
 # Build docker image and tag
 docker build -t brettfitz/traefik .
 
-# Push to Docker Hub repo
+# Push to Docker Hub repo as latest tag
 docker push brettfitz/traefik:latest
