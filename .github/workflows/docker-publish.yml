@@ -67,7 +67,7 @@ jobs:
         with:
             images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
             tags: |
-              type=raw,value=${{ github.ref }}
+              type=raw,value=${{ github.ref_name }}
               type=raw,value=latest
 
       # Build and push Docker image with Buildx (don't push on PR)
