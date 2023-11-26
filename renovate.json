@@ -1,6 +1,46 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "enabled": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
+  "git-submodules": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "groupName": "all non-major Python dependencies",
+      "groupSlug": "all-python-minor-patch",
+      "matchDatasources": [
+        "pypi"
+      ],
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    },
+    {
+      "updateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ],
+  "rangeStrategy": "bump",
+  "schedule": "every weekend",
   "extends": [
-    "config:base"
+    ":autodetectPinVersions",
+    ":combinePatchMinorReleases",
+    ":dependencyDashboard",
+    ":ignoreUnstable",
+    ":prConcurrentLimitNone",
+    ":prHourlyLimitNone",
+    ":prImmediately",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":separateMultipleMajorReleases",
+    ":updateNotScheduled",
+    "group:recommended"
   ]
 }
