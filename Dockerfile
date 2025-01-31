@@ -1,7 +1,7 @@
 # DockerFile
 
 # Base image
-FROM traefik:v2.11.18
+FROM traefik:v3.3.3
 
 # Dynamic config file
 COPY ./traefik_dynamic_config.yml /configs/traefik_dynamic_config.yml
